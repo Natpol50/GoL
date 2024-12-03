@@ -14,5 +14,7 @@ Cell CellFactory::createCell(int x, int y, CellType cellType)
     return AliveStaticC(x, y);
   case CellType::STATIC_DEAD:
     return DeadStaticC(x, y);
+  default:
+    return AliveCell();
   }
 }

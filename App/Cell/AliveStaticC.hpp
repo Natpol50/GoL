@@ -17,8 +17,7 @@ private:
 public:
   AliveStaticC();
   AliveStaticC(int x, int y);
-  std::vector<std::tuple<int, int>> getNeighbours();
-  bool switchState(int neighbourCount);
+  bool switchState(int neighbourCount) override;
 };
 
 #endif // ALIVESTATICC_H

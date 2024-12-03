@@ -3,6 +3,10 @@
 //
 
 #include "Cell.hpp"
+Cell::Cell(): pos_x(0), pos_y(0), displayByte(" ")
+{
+
+}
 
 int Cell::getPosX()
 {
@@ -32,4 +36,9 @@ std::vector<std::tuple<int, int>> Cell::getNeighbours()
     neighbours.push_back(std::make_tuple(pos_x + 1, pos_y - 1));
     neighbours.push_back(std::make_tuple(pos_x + 1, pos_y - 1));
     return neighbours;
+}
+
+bool Cell::switchState(int neighbourCount)
+{
+    return false;
 }

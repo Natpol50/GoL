@@ -16,6 +16,7 @@ protected:
     int pos_y;
 
 public:
+    Cell();
     virtual std::vector<std::tuple<int, int>> getNeighbours();
     virtual bool switchState(int neighbourCount);
     int getPosX();

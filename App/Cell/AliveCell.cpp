@@ -7,7 +7,6 @@ using namespace std;
 
 AliveCell::AliveCell() : pos_x(0), pos_y(0), displayByte("1") {}
 AliveCell::AliveCell(int x, int y) : pos_x(x), pos_y(y), displayByte("1") {}
-AliveCell::~AliveCell() {}
 
 bool AliveCell::switchState(int neighbourCount)
 {
