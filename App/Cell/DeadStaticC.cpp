@@ -13,3 +13,9 @@ bool DeadStaticC::switchState(int neighbourCount)
     // Never changes state
     return 1;
 }
+
+std::vector<std::tuple<int, int>> Cell::getNeighbours() override
+{
+    std::vector<std::tuple<int, int>> neighbours;
+    return neighbours;
+}
