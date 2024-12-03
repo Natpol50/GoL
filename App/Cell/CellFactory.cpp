@@ -2,17 +2,17 @@
 // Created by oceane on 12/3/24.
 //
 
-#include "CellFactory.h"
+#include "CellFactory.hpp"
 
-bool CellFactory::createCell(int x, int y, CellType cellType) {
-     switch (cellType) {
-        case CellType::ALIVE:
-          return true;
-        case CellType::STATIC_ALIVE:
-          return true;
-        case CellType::STATIC_DEAD:
-          return true;
-        defalt:
-          return false;
-     }
+Cell CellFactory::createCell(int x, int y, CellType cellType)
+{
+  switch (cellType)
+  {
+  case CellType::ALIVE:
+    return AliveCell(x, y);
+  case CellType::STATIC_ALIVE:
+    return AliveStaticC(x, y);
+  case CellType::STATIC_DEAD:
+    return DeadStaticC(x, y);
+  }
 }
