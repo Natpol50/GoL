@@ -7,9 +7,6 @@
 #include <iostream>
 #include "CellType.hpp"
 #include "Cell.hpp"
-#include "AliveCell.hpp"
-#include "DeadStaticC.hpp"
-#include "AliveStaticC.hpp"
 
 class CellFactory
 {

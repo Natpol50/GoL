@@ -6,6 +6,9 @@
 #define CELLTYPE_H
 
 #include <iostream>
+#include "AliveCell.hpp"
+#include "DeadStaticC.hpp"
+#include "AliveStaticC.hpp"
 
 enum class CellType
 {
