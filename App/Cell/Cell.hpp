@@ -19,8 +19,8 @@ public:
     Cell();
     virtual std::vector<std::tuple<int, int>> getNeighbours();
     virtual bool switchState(int neighbourCount);
-    int getPosX();
-    int getPosY();
+    int getPosX() const;
+    int getPosY() const;
     std::string getDisplay();
     bool operator==(const Cell cell)
     {

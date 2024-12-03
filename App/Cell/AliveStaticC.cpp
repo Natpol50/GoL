@@ -4,11 +4,11 @@
 
 #include "AliveStaticC.hpp"
 
-AliveStaticC::AliveStaticC() : pos_x(0), pos_y(0), displayByte("1") {}
-AliveStaticC::AliveStaticC(int x, int y) : pos_x(x), pos_y(y), displayByte("1") {}
+AliveStaticC::AliveStaticC() : displayByte("1"), pos_x(0), pos_y(0) {}
+AliveStaticC::AliveStaticC(const int x, const int y) : displayByte("1"), pos_x(x), pos_y(y) {}
 
 bool AliveStaticC::switchState(int neighbourCount)
 {
     // A static cell doesn't change state
-    return 1;
+    return true;
 }

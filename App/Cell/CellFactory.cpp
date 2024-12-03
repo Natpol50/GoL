@@ -4,7 +4,7 @@
 
 #include "CellFactory.hpp"
 
-Cell CellFactory::createCell(int x, int y, CellType cellType)
+Cell CellFactory::createCell(const int x, const int y, const CellType cellType)
 {
   switch (cellType)
   {

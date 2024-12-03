@@ -5,18 +5,15 @@
 #include "AliveCell.hpp"
 using namespace std;
 
-AliveCell::AliveCell() : pos_x(0), pos_y(0), displayByte("1") {}
-AliveCell::AliveCell(int x, int y) : pos_x(x), pos_y(y), displayByte("1") {}
+AliveCell::AliveCell() : displayByte("1"), pos_x(0), pos_y(0) {}
+AliveCell::AliveCell(const int x, const int y) : displayByte("1"), pos_x(x), pos_y(y) {}
 
-bool AliveCell::switchState(int neighbourCount)
+bool AliveCell::switchState(const int neighbourCount)
 {
     /* Returns 0 if cell dead, 1 if alive */
     if (neighbourCount < 2 || neighbourCount > 3)
     {
-        return 0;
+        return false;
     }
-    else
-    {
-        return 1;
-    }
+    return true;
 }

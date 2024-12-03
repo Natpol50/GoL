@@ -11,7 +11,7 @@
 class CellFactory
 {
 public:
-  Cell createCell(int x, int y, CellType cellType);
+  static Cell createCell(int x, int y, CellType cellType);
 };
 
 #endif // CELLFACTORY_H

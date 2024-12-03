@@ -3,17 +3,17 @@
 //
 
 #include "Cell.hpp"
-Cell::Cell(): pos_x(0), pos_y(0), displayByte(" ")
+Cell::Cell(): displayByte(" "), pos_x(0), pos_y(0)
 {
 
 }
 
-int Cell::getPosX()
+int Cell::getPosX() const
 {
     return pos_x;
 }
 
-int Cell::getPosY()
+int Cell::getPosY() const
 {
     return pos_y;
 }
@@ -26,15 +26,15 @@ std::string Cell::getDisplay()
 std::vector<std::tuple<int, int>> Cell::getNeighbours()
 {
     std::vector<std::tuple<int, int>> neighbours;
-    neighbours.push_back(std::make_tuple(pos_x - 1, pos_y + 1));
-    neighbours.push_back(std::make_tuple(pos_x, pos_y + 1));
-    neighbours.push_back(std::make_tuple(pos_x + 1, pos_y + 1));
-    neighbours.push_back(std::make_tuple(pos_x - 1, pos_y));
-    neighbours.push_back(std::make_tuple(pos_x + 1, pos_y));
-    neighbours.push_back(std::make_tuple(pos_x - 1, pos_y - 1));
-    neighbours.push_back(std::make_tuple(pos_x, pos_y - 1));
-    neighbours.push_back(std::make_tuple(pos_x + 1, pos_y - 1));
-    neighbours.push_back(std::make_tuple(pos_x + 1, pos_y - 1));
+    neighbours.emplace_back(pos_x - 1, pos_y + 1);
+    neighbours.emplace_back(pos_x, pos_y + 1);
+    neighbours.emplace_back(pos_x + 1, pos_y + 1);
+    neighbours.emplace_back(pos_x - 1, pos_y);
+    neighbours.emplace_back(pos_x + 1, pos_y);
+    neighbours.emplace_back(pos_x - 1, pos_y - 1);
+    neighbours.emplace_back(pos_x, pos_y - 1);
+    neighbours.emplace_back(pos_x + 1, pos_y - 1);
+    neighbours.emplace_back(pos_x + 1, pos_y - 1);
     return neighbours;
 }
 
