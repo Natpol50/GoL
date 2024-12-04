@@ -3,7 +3,7 @@
 //
 
 #include "Cell.hpp"
-Cell::Cell(): displayByte(" "), pos_x(0), pos_y(0)
+Cell::Cell(): displayByte(CellType::ALIVE), pos_x(0), pos_y(0)
 {
 
 }
@@ -18,7 +18,7 @@ int Cell::getPosY() const
     return pos_y;
 }
 
-std::string Cell::getDisplay()
+CellType Cell::getDisplay()
 {
     return displayByte;
 }

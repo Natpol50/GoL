@@ -7,11 +7,12 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#include "CellType.hpp"
 
 class Cell
 {
 protected:
-    std::string displayByte;
+    CellType displayByte;
     int pos_x;
     int pos_y;
 
@@ -21,7 +22,7 @@ public:
     virtual bool switchState(int neighbourCount);
     int getPosX() const;
     int getPosY() const;
-    std::string getDisplay();
+    CellType getDisplay();
     bool operator==(const Cell cell)
     {
         return this->pos_x == cell.pos_x && this->pos_y == cell.pos_y && this->displayByte == cell.displayByte;

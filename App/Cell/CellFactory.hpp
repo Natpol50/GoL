@@ -5,7 +5,6 @@
 #ifndef CELLFACTORY_H
 #define CELLFACTORY_H
 #include <iostream>
-#include "CellType.hpp"
 #include "Cell.hpp"
 
 class CellFactory

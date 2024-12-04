@@ -15,6 +15,7 @@ enum class CellType
     ALIVE,
     STATIC_DEAD,
     STATIC_ALIVE,
+
 };
 
 #endif // CELLTYPE_H

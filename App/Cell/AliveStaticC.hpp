@@ -10,7 +10,7 @@
 class AliveStaticC : public Cell
 {
 private:
-  std::string displayByte;
+  CellType displayByte;
   int pos_x;
   int pos_y;
 

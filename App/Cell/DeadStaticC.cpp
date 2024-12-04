@@ -4,8 +4,8 @@
 
 #include "DeadStaticC.hpp"
 
-DeadStaticC::DeadStaticC() : pos_x(0), pos_y(0), displayByte("2") {}
-DeadStaticC::DeadStaticC(const int x, const int y) : pos_x(x), pos_y(y), displayByte("2") {}
+DeadStaticC::DeadStaticC() : pos_x(0), pos_y(0), displayByte(CellType::STATIC_DEAD) {}
+DeadStaticC::DeadStaticC(const int x, const int y) : pos_x(x), pos_y(y), displayByte(CellType::STATIC_DEAD) {}
 
 bool DeadStaticC::switchState(int neighbourCount)
 {

@@ -5,8 +5,8 @@
 #include "AliveCell.hpp"
 using namespace std;
 
-AliveCell::AliveCell() : displayByte("1"), pos_x(0), pos_y(0) {}
-AliveCell::AliveCell(const int x, const int y) : displayByte("1"), pos_x(x), pos_y(y) {}
+AliveCell::AliveCell() : displayByte(CellType::ALIVE), pos_x(0), pos_y(0) {}
+AliveCell::AliveCell(const int x, const int y) : displayByte(CellType::ALIVE), pos_x(x), pos_y(y) {}
 
 bool AliveCell::switchState(const int neighbourCount)
 {

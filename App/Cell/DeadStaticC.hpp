@@ -12,7 +12,7 @@ class DeadStaticC : public Cell
 private:
     int pos_x;
     int pos_y;
-    std::string displayByte;
+    CellType displayByte;
 
 public:
     DeadStaticC();
