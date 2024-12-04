@@ -18,11 +18,11 @@ protected:
 
 public:
     Cell();
-    virtual std::vector<std::tuple<int, int>> getNeighbours();
-    virtual bool switchState(int neighbourCount);
+    virtual std::vector<std::tuple<int, int>> getNeighbours() const;
+    virtual bool switchState(int neighbourCount) const;
     int getPosX() const;
     int getPosY() const;
-    CellType getDisplay();
+    CellType getDisplay() const;
     bool operator==(const Cell cell)
     {
         return this->pos_x == cell.pos_x && this->pos_y == cell.pos_y && this->displayByte == cell.displayByte;

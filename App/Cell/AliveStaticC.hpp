@@ -17,7 +17,7 @@ private:
 public:
   AliveStaticC();
   AliveStaticC(int x, int y);
-  bool switchState(int neighbourCount) override;
+  bool switchState(int neighbourCount) const override;
 };
 
 #endif // ALIVESTATICC_H

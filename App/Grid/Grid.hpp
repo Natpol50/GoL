@@ -23,11 +23,11 @@ public:
     
     bool removeCell(int x, int y);
     
-    int countNeighbours(int x, int y) const;
-    
     void update();
     
     bool isValidPosition(int x, int y) const;
     
     Cell* getCellAt(int x, int y);
+    
+    void print() const;
 };

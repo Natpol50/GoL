@@ -17,8 +17,8 @@ private:
 public:
     DeadStaticC();
     DeadStaticC(int x, int y);
-    std::vector<std::tuple<int, int>> getNeighbours() override;
-    bool switchState(int neighbourCount) override;
+    std::vector<std::tuple<int, int>> getNeighbours() const override;
+    bool switchState(int neighbourCount) const override;
 };
 
 #endif // DEADSTATICC_H

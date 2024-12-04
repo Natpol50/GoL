@@ -20,4 +20,4 @@ add_executable(GoL
     App/Grid/Grid.cpp
     App/Grid/Grid.hpp
     App/Tests/CellTests.cpp
-    App/main.cpp)
+    App/Grid/Test.cpp)

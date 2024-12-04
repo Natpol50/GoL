@@ -18,12 +18,12 @@ int Cell::getPosY() const
     return pos_y;
 }
 
-CellType Cell::getDisplay()
+CellType Cell::getDisplay() const
 {
     return displayByte;
 }
 
-std::vector<std::tuple<int, int>> Cell::getNeighbours()
+std::vector<std::tuple<int, int>> Cell::getNeighbours() const
 {
     std::vector<std::tuple<int, int>> neighbours;
     neighbours.emplace_back(pos_x - 1, pos_y + 1);
@@ -38,7 +38,7 @@ std::vector<std::tuple<int, int>> Cell::getNeighbours()
     return neighbours;
 }
 
-bool Cell::switchState(int neighbourCount)
+bool Cell::switchState(int neighbourCount) const
 {
     return false;
 }

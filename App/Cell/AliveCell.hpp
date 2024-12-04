@@ -17,7 +17,7 @@ private:
 public:
   AliveCell();
   AliveCell(int x, int y);
-  bool switchState(int neighbourCount) override;
+  bool switchState(int neighbourCount) const override;
 };
 
 #endif // ALIVECELL_H
