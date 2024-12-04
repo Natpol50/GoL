@@ -6,6 +6,10 @@
 #define CELLFACTORY_H
 #include <iostream>
 #include "Cell.hpp"
+#include "AliveCell.hpp"
+#include "DeadStaticC.hpp"
+#include "AliveStaticC.hpp"
+
 
 class CellFactory
 {

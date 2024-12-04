@@ -3,8 +3,7 @@ project(GoL)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(App/Cell)
-include_directories(App/GUI)
+include_directories(App)
 
 add_executable(GoL
     App/Cell/AliveCell.cpp
@@ -18,5 +17,7 @@ add_executable(GoL
     App/Cell/CellType.hpp
     App/Cell/DeadStaticC.cpp
     App/Cell/DeadStaticC.hpp
+    App/Grid/Grid.cpp
+    App/Grid/Grid.hpp
     App/Tests/CellTests.cpp
     App/main.cpp)
