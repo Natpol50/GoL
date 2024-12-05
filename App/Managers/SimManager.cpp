@@ -14,9 +14,8 @@ int SimManager::getCurrentIterationCount()
 int SimManager::iterate(GridObject grid)
 {
     iteractionCount++;
-    grid.applyRules(); //iterate
+    grid.update(); // iterate
 
-
-    //add grid to history returns 1 if loop detected
+    // add grid to history returns 1 if loop detected
     return history.hashAndCheck(grid);
 }
