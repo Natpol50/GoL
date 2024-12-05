@@ -3,13 +3,17 @@
 
 void testInitialize() {
     GridObject grid(10, 10);
-    std::vector<std::tuple<int, int>> positions = {{1, 1}, {1, 2}, {1, 3}, {2,2}};
-    std::vector<CellType> types = {CellType::ALIVE, CellType::ALIVE, CellType::ALIVE};
+    std::vector<std::tuple<int, int, CellType>> cells = {
+        {1, 1, CellType::ALIVE}, 
+        {1, 2, CellType::ALIVE}, 
+        {1, 3, CellType::ALIVE}, 
+        {2, 2, CellType::ALIVE}
+    };
     
-    grid.initialize(positions, types);
+    grid.initialize(cells);
     
     std::cout << "Test Initialize: "
-              << ((grid.getCellAt(1, 1) && grid.getCellAt(1, 2) && grid.getCellAt(1, 3)) ? "PASS" : "FAIL")
+              << ((grid.getCellAt(1, 1) && grid.getCellAt(1, 2) && grid.getCellAt(1, 3) && grid.getCellAt(2, 2)) ? "PASS" : "FAIL")
               << std::endl;
     //grid.print();
 }
