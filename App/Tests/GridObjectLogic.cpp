@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Grid.hpp"
+#include "Grid/GridObject.hpp"
 
 void testInitialize() {
-    Grid grid(10, 10);
+    GridObject grid(10, 10);
     std::vector<std::tuple<int, int>> positions = {{1, 1}, {1, 2}, {1, 3}, {2,2}};
     std::vector<CellType> types = {CellType::ALIVE, CellType::ALIVE, CellType::ALIVE};
     
@@ -11,20 +11,20 @@ void testInitialize() {
     std::cout << "Test Initialize: "
               << ((grid.getCellAt(1, 1) && grid.getCellAt(1, 2) && grid.getCellAt(1, 3)) ? "PASS" : "FAIL")
               << std::endl;
-    grid.print();
+    //grid.print();
 }
 
 void testUpdate() {
-    Grid grid(10, 10);
+    GridObject grid(10, 10);
     grid.addCell(1, 1, CellType::ALIVE);
     grid.addCell(1, 2, CellType::ALIVE);
     grid.addCell(1, 3, CellType::ALIVE);
     
-    grid.print();
+    //grid.print();
     
     grid.update();
     
-    grid.print();
+    //grid.print();
     
     
     bool updateCorrect = grid.getCellAt(0, 2) && 
@@ -39,21 +39,21 @@ void testUpdate() {
 }
 
 void testStaticCell() {
-    Grid grid(10, 10);
-    grid.print();
+    GridObject grid(10, 10);
+    //grid.print();
     grid.addCell(1, 1, CellType::STATIC_ALIVE);
     grid.update();
     
-    grid.print();
+    //grid.print();
     
     std::cout << "Test Static Cell: " 
               << (grid.getCellAt(1, 1) ? "PASS" : "FAIL") 
               << std::endl;
-    grid.print();
+    //grid.print();
 }
 
 int main() {
-    std::cout << "Starting Grid Tests\n-------------------" << std::endl;
+    std::cout << "Starting GridObject Tests\n-------------------" << std::endl;
     testInitialize();
     testUpdate();
     testStaticCell();

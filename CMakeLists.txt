@@ -17,7 +17,6 @@ add_executable(GoL
     App/Cell/CellType.hpp
     App/Cell/DeadStaticC.cpp
     App/Cell/DeadStaticC.hpp
-    App/Grid/Grid.cpp
-    App/Grid/Grid.hpp
-    App/Tests/CellTests.cpp
-    App/Grid/Test.cpp)
+    App/Grid/GridObject.cpp
+    App/Grid/GridObject.hpp
+    App/Tests/GridObjectLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test

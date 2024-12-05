@@ -1,30 +1,8 @@
-//
-// Created by oceane on 12/2/24.
-//
-
 #include "Cell.hpp"
-Cell::Cell(): displayByte(CellType::ALIVE), pos_x(0), pos_y(0)
-{
 
-}
+Cell::Cell(int x, int y) : pos_x(x), pos_y(y) {}
 
-int Cell::getPosX() const
-{
-    return pos_x;
-}
-
-int Cell::getPosY() const
-{
-    return pos_y;
-}
-
-CellType Cell::getDisplay() const
-{
-    return displayByte;
-}
-
-std::vector<std::tuple<int, int>> Cell::getNeighbours() const
-{
+std::vector<std::tuple<int, int>> Cell::getNeighbours() const {
     std::vector<std::tuple<int, int>> neighbours;
     neighbours.emplace_back(pos_x - 1, pos_y + 1);
     neighbours.emplace_back(pos_x, pos_y + 1);
@@ -34,11 +12,5 @@ std::vector<std::tuple<int, int>> Cell::getNeighbours() const
     neighbours.emplace_back(pos_x - 1, pos_y - 1);
     neighbours.emplace_back(pos_x, pos_y - 1);
     neighbours.emplace_back(pos_x + 1, pos_y - 1);
-    neighbours.emplace_back(pos_x + 1, pos_y - 1);
     return neighbours;
-}
-
-bool Cell::switchState(int neighbourCount) const
-{
-    return false;
 }

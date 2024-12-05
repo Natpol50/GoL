@@ -1,32 +1,26 @@
-//
-// Created by oceane on 12/2/24.
-//
-
 #ifndef CELL_H
 #define CELL_H
-#include <iostream>
+
 #include <vector>
 #include <tuple>
 #include "CellType.hpp"
 
-class Cell
-{
+class Cell {
 protected:
     CellType displayByte;
     int pos_x;
     int pos_y;
 
 public:
-    Cell();
+    Cell(int x, int y);
+    virtual ~Cell() = default;
+    
     virtual std::vector<std::tuple<int, int>> getNeighbours() const;
-    virtual bool switchState(int neighbourCount) const;
-    int getPosX() const;
-    int getPosY() const;
-    CellType getDisplay() const;
-    bool operator==(const Cell cell)
-    {
-        return this->pos_x == cell.pos_x && this->pos_y == cell.pos_y && this->displayByte == cell.displayByte;
-    }
+    virtual bool switchState(int neighbourCount) const = 0;
+    
+    int getPosX() const { return pos_x; }
+    int getPosY() const { return pos_y; }
+    CellType getDisplay() const { return displayByte; }
 };
 
 #endif // CELL_H
