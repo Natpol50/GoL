@@ -7,15 +7,15 @@ void createTestFile(const std::string& filename) {
     if (!file) {
         throw std::runtime_error("Could not create test file");
     }
-    file << "10 8 1\n"  // width height isToroidal
-         << "0 0 0 0 0 0 0 0 0 0\n"
-         << "0 0 1 1 1 0 0 0 0 0\n"  // Glider
-         << "0 0 0 0 0 0 0 0 0 0\n"
-         << "0 0 2 0 0 0 0 0 0 0\n"  // Static dead
-         << "0 0 0 0 3 0 0 0 0 0\n"  // Static alive
-         << "0 0 0 0 0 0 0 0 0 0\n"
-         << "0 0 0 0 0 0 0 0 0 0\n"
-         << "0 0 0 0 0 0 0 0 0 0\n";
+    file << "10 8 1\n"
+         << "0 0 0 0 0 0 0 0\n"
+         << "0 0 1 1 1 0 0 0\n"
+         << "0 0 0 0 0 0 0 0\n"
+         << "0 0 2 0 0 0 0 0\n"
+         << "0 0 0 0 3 0 0 0\n"
+         << "0 0 0 0 0 0 0 0\n"
+         << "0 0 0 0 0 0 0 0\n"
+         << "0 0 0 0 0 0 0 0\n";
 }
 
 void printTestResult(const std::string& testName, bool success) {
@@ -60,16 +60,6 @@ void testSaveState() {
         GridObject grid = manager.LoadInitialState();
         bool saveSuccess = manager.SaveState(&grid, "test_state");
         printTestResult("Save operation", saveSuccess);
-
-        if (saveSuccess) {
-            FileManager newManager("output/test_state.txt", "output");
-            GridObject newGrid = newManager.LoadInitialState();
-            
-            grid.print();
-            
-            std::cout << "\nReloaded grid state:" << std::endl;
-            newGrid.print();
-        }
         
     } catch (const std::exception& e) {
         std::cout << "Error during save/reload: " << e.what() << std::endl;

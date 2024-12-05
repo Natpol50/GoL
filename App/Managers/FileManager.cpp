@@ -88,8 +88,6 @@ bool FileManager::SaveState(const GridObject* grid, const std::string& fileName)
         return false;
     }
 
-    file << grid->width << " " << grid->height << " " << grid->isToroidal << "\n";
-
     for (int y = 0; y < grid->height; y++) {
         for (int x = 0; x < grid->width; x++) {
             auto it = grid->cellmap.find({x, y});
