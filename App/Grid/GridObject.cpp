@@ -79,6 +79,7 @@ const Cell* GridObject::getCellAt(int x, int y) const {
 
 
 void GridObject::print() const {
+    std::cout << "Grid IsToroidal : " << isToroidal << std::endl;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             auto it = cellmap.find({x, y});
@@ -87,8 +88,8 @@ void GridObject::print() const {
             } else {
                 switch(it->second->getDisplay()) {
                     case CellType::ALIVE: std::cout << "1 "; break;
-                    case CellType::STATIC_ALIVE: std::cout << "2 "; break;
-                    case CellType::STATIC_DEAD: std::cout << "3 "; break;
+                    case CellType::STATIC_DEAD: std::cout << "2 "; break;
+                    case CellType::STATIC_ALIVE: std::cout << "3 "; break;
                     default: std::cout << "0 ";
                 }
             }

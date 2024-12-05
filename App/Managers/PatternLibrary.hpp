@@ -11,7 +11,7 @@ struct Pattern {
 };
 
 const std::vector<Pattern> PATTERN_LIBRARY = {
-    {"Crawler", {
+    {"GCrawler", {
         {-1, -1, CellType::ALIVE},
         {0, -1, CellType::ALIVE},
         {1, -1, CellType::ALIVE},

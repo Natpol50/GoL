@@ -1,26 +1,21 @@
-//
-// Created by oceane on 12/4/24.
-//
+#ifndef FILE_MANAGER_H
+#define FILE_MANAGER_H
 
-#ifndef FILEMANAGER_H
-#define FILEMANAGER_H
-
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <tuple>
+#include <string>
 #include "Grid/GridObject.hpp"
 
 class FileManager {
 private:
-    std::string outputDir;
     std::string inputFile;
+    std::string outputDir;
+
+    std::string buildPath(const std::string& filename) const;
+    bool createOutputDir() const;  // Nouvelle méthode
+
 public:
-    FileManager(std::string outputDir, std::string inputFile);
-    GridObject loadInitialState();
-    int saveState(GridObject toSave);
+    FileManager(const std::string& input, const std::string& output);
+    GridObject LoadInitialState() const;
+    bool SaveState(const GridObject* grid, const std::string& fileName) const;
 };
 
-
-
-#endif //FILEMANAGER_H
+#endif // FILE_MANAGER_H

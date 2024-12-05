@@ -22,4 +22,6 @@ add_executable(GoL
     App/Managers/PatternLibrary.hpp
     App/Managers/PatternManager.cpp
     App/Managers/PatternManager.hpp
-    App/Tests/PatternManLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
+    App/Managers/FileManager.cpp
+    App/Managers/FileManager.hpp
+    App/Tests/FileManLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
