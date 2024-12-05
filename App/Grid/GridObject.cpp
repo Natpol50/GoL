@@ -2,10 +2,10 @@
 
 GridObject::GridObject(int h, int w) : height(h), width(w), isToroidal(false) {}
 
-void GridObject::initialize(const std::vector<std::tuple<int, int>>& positions, 
-                          const std::vector<CellType>& types) {
-    for (size_t i = 0; i < positions.size() && i < types.size(); ++i) {
-        addCell(std::get<0>(positions[i]), std::get<1>(positions[i]), types[i]);
+
+void GridObject::initialize(const std::vector<std::tuple<int, int, CellType>>& cells) {
+    for (const auto& cell : cells) {
+        addCell(std::get<0>(cell), std::get<1>(cell), std::get<2>(cell));
     }
 }
 

@@ -21,8 +21,7 @@ private:
 public:
     GridObject(int height, int width);
     
-    void initialize(const std::vector<std::tuple<int, int>>& positions, 
-                   const std::vector<CellType>& types);
+    void initialize(const std::vector<std::tuple<int, int, CellType>>& cells);
     void addCell(int x, int y, CellType type);
     bool removeCell(int x, int y);
     void update();
