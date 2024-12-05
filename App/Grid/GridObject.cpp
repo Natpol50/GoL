@@ -23,8 +23,18 @@ void GridObject::update() {
     std::map<std::tuple<int, int>, int> positionCounts;
     for (const auto& [pos, cell] : cellmap) {
         auto neighbours = cell->getNeighbours();
-        for (const auto& neighPos : neighbours) {
-            positionCounts[neighPos]++;
+        for (auto neighPos : neighbours) {
+            int x = std::get<0>(neighPos);
+            int y = std::get<1>(neighPos);
+
+            if (isToroidal) {
+                x = (x + width) % width;
+                y = (y + height) % height;
+                neighPos = std::make_tuple(x, y);
+                positionCounts[neighPos]++;
+            } else if (isValidPosition(x, y)) {
+                positionCounts[neighPos]++;
+            }
         }
     }
 

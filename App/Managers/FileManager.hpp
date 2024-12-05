@@ -9,7 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <tuple>
-#include "GridObject.hpp"
+#include "Grid/GridObject.hpp"
 
 class FileManager {
 private:

@@ -30,6 +30,9 @@ public:
     bool isValidPosition(int x, int y) const;
     const Cell* getCellAt(int x, int y) const;
     void print() const;
+
+    friend class FileManager;
+    friend class HashHistoryManager;
 };
 
 #endif // GRID_H

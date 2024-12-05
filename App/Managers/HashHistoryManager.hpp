@@ -5,7 +5,7 @@
 #include <iostream>
 #include <unordered_set>
 #include <bits/stdc++.h>
-#include "GridObject.hpp"
+#include "Grid/GridObject.hpp"
 
 class HashHistoryManager {
 private:
