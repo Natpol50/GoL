@@ -1,6 +1,6 @@
 #include "GridObject.hpp"
 
-GridObject::GridObject(int h, int w) : height(h), width(w), isToroidal(false) {}
+GridObject::GridObject(int h, int w, bool toroidal) : height(h), width(w), isToroidal(toroidal) {}
 
 
 void GridObject::initialize(const std::vector<std::tuple<int, int, CellType>>& cells) {
@@ -10,6 +10,10 @@ void GridObject::initialize(const std::vector<std::tuple<int, int, CellType>>& c
 }
 
 void GridObject::addCell(int x, int y, CellType type) {
+    if (isToroidal) {
+        x = (x + width) % width;
+        y = (y + height) % height;
+    }
     if (isValidPosition(x, y)) {
         cellmap[{x, y}] = factory.createCell(x, y, type);
         // std::cout << "Added cell at " << x << ", " << y << std::endl;
@@ -73,7 +77,7 @@ const Cell* GridObject::getCellAt(int x, int y) const {
     return it != cellmap.end() ? it->second.get() : nullptr;
 }
 
-/*
+
 void GridObject::print() const {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -93,4 +97,3 @@ void GridObject::print() const {
     }
     std::cout << std::endl;
 }
-*/

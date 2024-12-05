@@ -19,4 +19,7 @@ add_executable(GoL
     App/Cell/DeadStaticC.hpp
     App/Grid/GridObject.cpp
     App/Grid/GridObject.hpp
-    App/Tests/GridObjectLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
+    App/Managers/PatternLibrary.hpp
+    App/Managers/PatternManager.cpp
+    App/Managers/PatternManager.hpp
+    App/Tests/PatternManLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
