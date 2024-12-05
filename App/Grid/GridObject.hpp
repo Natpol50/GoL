@@ -7,7 +7,6 @@
 
 #include <map>
 #include <string>
-#include "Cell/Cell.hpp"
 #include "Cell/CellFactory.hpp"
 #include <memory>
 
