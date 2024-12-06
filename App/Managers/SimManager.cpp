@@ -15,7 +15,6 @@ int SimManager::iterate(GridObject grid)
 {
     iteractionCount++;
     grid.update(); // iterate
-
     if (iteractionCount >= maxIterations)
     {
         return 1; // max iterations reached
