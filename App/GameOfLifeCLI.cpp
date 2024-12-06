@@ -8,7 +8,7 @@ int GameOfLifeCLI::run()
     int status = 0;
     do
     {
-        status = simManager.iterate(grid);
+        status = simManager.iterate(&grid);
     } while (status == 0);
     if (status == 1)
     {
