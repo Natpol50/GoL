@@ -2,13 +2,17 @@
 #include <unistd.h>
 #include <string>
 #include <fstream>
-#include <cassert>
+#include <iomanip>
 
 #include "GameOfLifeCLI.hpp"
 
+#define date "06/12/2024"
+#define version "0.5.1"
+
 using namespace std;
 
-bool validateFile(const std::string& filename) {
+bool validateFile(const std::string &filename)
+{
     std::ifstream file(filename);
     return file.good();
 }
@@ -26,15 +30,21 @@ int main(int argc, char *argv[])
         switch (opt)
         {
         case 'p':
-            inputPath = optarg;                
+            inputPath = optarg;
             break;
 
         case 'v':
             verboseMode = true;
-            cout << "Adaptive Horizon \n"
-                 << "Made by: POLETTE Nathan & LEMARINEL Océane \n"
-                 << "Last update: 06/12/2024 \n"
-                 << "Version 0.28 \n";
+            cout << std::left
+                 << "┌────────────────────────────────────┐\n"
+                 << "│        Adaptive Horizon           │\n"
+                 << "├────────────────────────────────────┤\n"
+                 << "│ Creators: " << std::setw(20) << "POLETTE Nathan" << " │\n"
+                 << "│           " << std::setw(20) << "LEMARINEL Océane" << " │\n"
+                 << "│                                    │\n"
+                 << "│ Last Update: " << std::setw(15) << date << "   │\n"
+                 << "│ Version:     " << std::setw(15) << version << "   │\n"
+                 << "└────────────────────────────────────┘\n";
             break;
 
         case 'o':
@@ -47,13 +57,13 @@ int main(int argc, char *argv[])
 
         case 'h':
             cout << "Adaptive Horizon \n"
-                 <<"\n"
-                 <<"\n"
-                 <<"-help -h     Displays help information\n\n"
-                 <<"-v           Displays game version and extra info about it\n\n"
-                 <<"-p path      Gives input file path for execution [mandatory]\n\n"
-                 <<"-o name      Gives folder name for iteration outputs\n\n"
-                 <<"-i number    Gives max iteration amount\n\n";
+                 << "\n"
+                 << "\n"
+                 << "-help -h     Displays help information\n\n"
+                 << "-v           Displays game version and extra info about it\n\n"
+                 << "-p path      Gives input file path for execution [mandatory]\n\n"
+                 << "-o name      Gives folder name for iteration outputs\n\n"
+                 << "-i number    Gives max iteration amount\n\n";
             return 0;
 
         default:
@@ -62,12 +72,14 @@ int main(int argc, char *argv[])
         }
     }
 
-    while (inputPath.empty() || !validateFile(inputPath)) {
+    while (inputPath.empty() || !validateFile(inputPath))
+    {
         cout << "Input path not provided or file not found. Please provide a valid file name/path: ";
         std::getline(cin, inputPath);
     }
 
-    if (verboseMode) {
+    if (verboseMode)
+    {
         cout << "Input Path: " << inputPath << endl;
         cout << "Output Path: " << (outputPath.empty() ? "Not specified" : outputPath) << endl;
         cout << "Max Iterations: " << (maxIterations > 0 ? std::to_string(maxIterations) : "Unlimited") << endl;
