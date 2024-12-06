@@ -5,9 +5,11 @@
 #include <iomanip>
 
 #include "GameOfLifeCLI.hpp"
+#include "GameOfLifeGUI.hpp"
 
 #define date "06/12/2024"
 #define version "0.5.1"
+bool mode;
 
 using namespace std;
 
@@ -25,7 +27,7 @@ int main(int argc, char *argv[])
     int maxIterations = 0;
     bool verboseMode = false;
 
-    while ((opt = getopt(argc, argv, "p:vo:i:h")) != -1)
+    while ((opt = getopt(argc, argv, "p:vo:i:hgc")) != -1)
     {
         switch (opt)
         {
@@ -67,10 +69,13 @@ int main(int argc, char *argv[])
                  << "-i number    Gives max iteration amount\n\n";
             exit(0);
             return 0;
-
+        case 'g':
+            mode = true;
+        case 'c':
+            mode = false;
         default:
             cerr << "Invalid option. Use -h for help." << endl;
-            return 1;
+            mode = false;
         }
     }
 
@@ -87,7 +92,15 @@ int main(int argc, char *argv[])
         cout << "Max Iterations: " << (maxIterations > 0 ? std::to_string(maxIterations) : "Unlimited") << endl;
     }
 
-    GameOfLifeCLI game(inputPath, outputPath, maxIterations);
-    game.run();
-    return 0;
+    if (mode == false)
+    {
+        GameOfLifeCLI game(inputPath, outputPath, maxIterations);
+        game.run();
+        return 0;
+    }
+    else if (mode == true){
+        GameOfLifeGUI game(includePath, outputPath, maxIterations);
+        game.run();
+        return;
+    }
 }
