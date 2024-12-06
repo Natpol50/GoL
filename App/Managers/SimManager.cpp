@@ -1,28 +1,28 @@
 #include "SimManager.hpp"
 
-SimManager::SimManager(int maxIterations)
-{
-    this->maxIterations = maxIterations;
-    this->iteractionCount = 0;
-}
+SimManager::SimManager(int maxIterations) : maxIterations(maxIterations), iteractionCount(0) {}
 
 int SimManager::getCurrentIterationCount()
 {
     return iteractionCount;
 }
 
-int SimManager::iterate(GridObject* grid)
+int SimManager::iterate(GridObject* grid, FileManager* FileMan,  bool Save)
 {
     iteractionCount++;
-    grid->update(); // iterate
-
-    if (iteractionCount >= maxIterations)
+    grid->update();
+    if (Save)
     {
-        return 1; // max iterations reached
+        std::string fileName = "Iteration" + std::to_string(iteractionCount);
+        FileMan->SaveState(grid, fileName);
+    }
+    if (iteractionCount >= maxIterations || maxIterations == 0)
+    {
+        return 1;
     }
     else if (history.hashAndCheck(grid))
     {
-        return 2; // loop detected
+        return 2;
     }
-    return 0; // continue
+    return 0;
 }
