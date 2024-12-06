@@ -15,6 +15,7 @@ private:
     SimManager simManager;
     GridObject grid;
 public:
+    GameOfLifeCLI() = default;
     int run();
     int initialize(std::string inpuPath, std::string outputDir, int maxIterations);
 };

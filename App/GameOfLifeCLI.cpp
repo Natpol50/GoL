@@ -3,12 +3,14 @@
 
 using namespace std;
 
+GameOfLifeCLI::GameOfLifeCLI(){}
+
 int GameOfLifeCLI::run()
 {
     int status = 0;
     do
     {
-        status = simManager.iterate(&grid);
+        status = simManager.iterate(&grid, &fileManager;
     } while (status == 0);
     if (status == 1)
     {
