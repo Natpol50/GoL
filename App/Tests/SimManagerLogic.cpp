@@ -47,13 +47,16 @@ void runTests() {
     }
     
     {
-        std::cout << "Test 4: File saving...\n";
+        std::cout << "Test 4: File saving + max iteration...\n";
         FileManager fileMan("test_input.txt", "output");
         GridObject grid = fileMan.LoadInitialState();
         SimManager sim(3);
         
         
-        sim.iterate(&grid, &fileMan, true, false);
+        while (sim.iterate(&grid, &fileMan, true, false) == 0) {
+            true;
+        }
+        
     }
     
     {
