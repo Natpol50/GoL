@@ -23,6 +23,7 @@ private:
                   << "Last update: " << __DATE__ << "\n";
     }
 
+<<<<<<< Updated upstream
     static void displayHelp() {
         std::cout << "Adaptive Horizon - Game of Life\n"
                   << "Usage: program [options]\n\n"
@@ -35,6 +36,15 @@ private:
                   << "Example:\n"
                   << "  ./program -p input.txt -o output_folder -i 100\n";
     }
+=======
+int main(int argc, char *argv[])
+{
+    int opt;
+    string inputPath;
+    string outputPath = "output";
+    int maxIterations = 0;
+    bool verboseMode = false;
+>>>>>>> Stashed changes
 
     static bool validateInputFile(const std::string& path) {
         if (path.empty()) {
@@ -44,6 +54,7 @@ private:
         return file.good();
     }
 
+<<<<<<< Updated upstream
     static bool validateOutputPath(const std::string& path) {
         if (path.empty()) {
             return true;  // Empty path is allowed
@@ -54,6 +65,38 @@ private:
         } catch (const std::exception& e) {
             std::cerr << "Error creating output directory: " << e.what() << std::endl;
             return false;
+=======
+        case 'v':
+            verboseMode = true;
+            cout << "Adaptive Horizon \n"
+                 << "Made by: POLETTE Nathan & LEMARINEL Océane \n"
+                 << "Last update: 06/12/2024 \n"
+                 << "Version 0.28 \n";
+            break;
+
+        case 'o':
+            outputPath = optarg;
+            break;
+
+        case 'i':
+            maxIterations = std::stoi(optarg);
+            break;
+
+        case 'h':
+            cout << "Adaptive Horizon \n"
+                 <<"\n"
+                 <<"\n"
+                 <<"-help -h     Displays help information\n\n"
+                 <<"-v           Displays game version and extra info about it\n\n"
+                 <<"-p path      Gives input file path for execution [mandatory]\n\n"
+                 <<"-o name      Gives folder name for iteration outputs\n\n"
+                 <<"-i number    Gives max iteration amount\n\n";
+            break;
+
+        default:
+            cerr << "Invalid option. Use -h for help." << endl;
+            return 1;
+>>>>>>> Stashed changes
         }
     }
 
