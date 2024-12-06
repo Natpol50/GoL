@@ -17,7 +17,7 @@ public:
     SimManager();
     SimManager(int maxIterations);
     int getCurrentIterationCount();
-    int iterate(GridObject* grid, FileManager* FileMan, bool Save);
+    int iterate(GridObject* grid, FileManager* FileMan, bool Save, bool Hash);
 };
 
 #endif //SIM_MANAGER_HPP

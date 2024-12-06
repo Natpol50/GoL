@@ -7,7 +7,7 @@ int SimManager::getCurrentIterationCount()
     return iteractionCount;
 }
 
-int SimManager::iterate(GridObject* grid, FileManager* FileMan,  bool Save)
+int SimManager::iterate(GridObject* grid, FileManager* FileMan,  bool Save, bool Hash)
 {
     iteractionCount++;
     grid->update();
@@ -16,11 +16,11 @@ int SimManager::iterate(GridObject* grid, FileManager* FileMan,  bool Save)
         std::string fileName = "Iteration" + std::to_string(iteractionCount);
         FileMan->SaveState(grid, fileName);
     }
-    if (iteractionCount >= maxIterations || maxIterations == 0)
+    if (iteractionCount >= maxIterations && maxIterations != 0)
     {
         return 1;
     }
-    else if (history.hashAndCheck(grid))
+    else if (Hash == 1 && !history.hashAndCheck(grid))
     {
         return 2;
     }
