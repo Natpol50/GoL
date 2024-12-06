@@ -2,7 +2,6 @@
 
 GridObject::GridObject(int h, int w, bool toroidal) : height(h), width(w), isToroidal(toroidal) {}
 
-
 void GridObject::initialize(const std::vector<std::tuple<int, int, CellType>>& cells) {
     for (const auto& cell : cells) {
         addCell(std::get<0>(cell), std::get<1>(cell), std::get<2>(cell));

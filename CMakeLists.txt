@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
 project(GoL)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(App)
 
@@ -24,4 +25,8 @@ add_executable(GoL
     App/Managers/PatternManager.hpp
     App/Managers/FileManager.cpp
     App/Managers/FileManager.hpp
-    App/Tests/FileManLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
+    App/Managers/HashHistoryManager.cpp
+    App/Managers/HashHistoryManager.hpp
+    App/Managers/SimManager.cpp
+    App/Managers/SimManager.hpp
+    App/Tests/SimManagerLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
