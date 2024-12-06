@@ -1,5 +1,4 @@
 #include "GameOfLifeCLI.hpp"
-#include <string>
 
 GameOfLifeCLI::GameOfLifeCLI(std::string inputPath, std::string outputDir, int maxIterations)
 {
@@ -8,21 +7,28 @@ GameOfLifeCLI::GameOfLifeCLI(std::string inputPath, std::string outputDir, int m
     simManager = new SimManager(maxIterations);
 }
 
+GameOfLifeCLI::~GameOfLifeCLI()
+{
+    delete fileManager;
+    delete grid;
+    delete simManager;
+}
+
 int GameOfLifeCLI::run()
 {
     int status = 0;
-    do
-    {
+    do {
+        clearScreen();
+        std::cout << "Current iteration: " << simManager->getCurrentIterationCount() << std::endl;
         status = simManager->iterate(grid, fileManager, true, true);
     } while (status == 0);
 
-    if (status == 1)
-    {
-        std::cout << "Max iterations reached" << std::endl;
+    if (status == 1) {
+        std::cout << "\nMax iterations reached" << std::endl;
     }
-    else if (status == 2)
-    {
-        std::cout << "Loop detected" << std::endl;
+    else if (status == 2) {
+        std::cout << "\nLoop detected" << std::endl;
     }
+    
     return status;
 }

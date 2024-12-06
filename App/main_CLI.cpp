@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
 {
     int opt;
     string inputPath;
-    string outputPath;
-    int maxIterations = 0; // Initialize to 0
+    string outputPath = "output";
+    int maxIterations = 0;
     bool verboseMode = false;
 
     while ((opt = getopt(argc, argv, "p:vo:i:h")) != -1)
@@ -35,16 +35,17 @@ int main(int argc, char *argv[])
 
         case 'v':
             verboseMode = true;
-            cout << std::left
+            cout << "\033[1;32m" << std::left
                  << "┌────────────────────────────────────┐\n"
-                 << "│        Adaptive Horizon           │\n"
+                 << "│        Adaptive Horizon            │\n"
                  << "├────────────────────────────────────┤\n"
-                 << "│ Creators: " << std::setw(20) << "POLETTE Nathan" << " │\n"
-                 << "│           " << std::setw(20) << "LEMARINEL Océane" << " │\n"
+                 << "│ Creators: " << std::setw(20) << "POLETTE Nathan" << "     │\n"
+                 << "│           " << std::setw(20) << "LEMARINEL Océane" << "      │\n"
                  << "│                                    │\n"
-                 << "│ Last Update: " << std::setw(15) << date << "   │\n"
-                 << "│ Version:     " << std::setw(15) << version << "   │\n"
-                 << "└────────────────────────────────────┘\n";
+                 << "│ Last Update: " << std::setw(15) << date << "       │\n"
+                 << "│ Version:     " << std::setw(15) << version << "       │\n"
+                 << "└────────────────────────────────────┘\033[0m\n";
+            exit(0);
             break;
 
         case 'o':
@@ -56,7 +57,7 @@ int main(int argc, char *argv[])
             break;
 
         case 'h':
-            cout << "Adaptive Horizon \n"
+            cout << "\n\nAdaptive Horizon \n"
                  << "\n"
                  << "\n"
                  << "-help -h     Displays help information\n\n"
@@ -64,6 +65,7 @@ int main(int argc, char *argv[])
                  << "-p path      Gives input file path for execution [mandatory]\n\n"
                  << "-o name      Gives folder name for iteration outputs\n\n"
                  << "-i number    Gives max iteration amount\n\n";
+            exit(0);
             return 0;
 
         default:
