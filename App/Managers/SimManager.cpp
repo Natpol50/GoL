@@ -16,6 +16,13 @@ int SimManager::iterate(GridObject grid)
     iteractionCount++;
     grid.update(); // iterate
 
-    // add grid to history returns 1 if loop detected
-    return history.hashAndCheck(grid);
+    if (iteractionCount >= maxIterations)
+    {
+        return 1; // max iterations reached
+    }
+    else if (history.hashAndCheck(grid))
+    {
+        return 2; // loop detected
+    }
+    return 0; // continue
 }
