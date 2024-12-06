@@ -39,10 +39,8 @@ SFMLManager::SFMLManager(const GridObject* grid)
     setupSaveButton();
 
     if (isPanelVisible) {
-        // Setup stats panel
         statsPanel.setFillColor(sf::Color(50, 50, 50, 200));
         
-        // Configure all text elements
         const std::vector<sf::Text*> texts = {
             &iterationText, &cellCountText, &fpsText, &ipsText, &saveText
         };
@@ -73,34 +71,32 @@ void SFMLManager::setupSaveButton() {
 }
 
 void SFMLManager::handleResize(unsigned int width, unsigned int height) {
-    // Update views
     uiView.setSize(width, height);
     uiView.setCenter(width/2, height/2);
     
     gridView.setSize(width, height - STATS_HEIGHT);
     gridView.setCenter(width/2, gridView.getSize().y/2);
     
-    // Stats panel
+
     statsPanel.setSize(sf::Vector2f(width, STATS_HEIGHT));
     statsPanel.setPosition(0, height - STATS_HEIGHT);
     
     if (isPanelVisible) {
         float textY = height - STATS_HEIGHT + 15;
-        float elementWidth = width / 5;  // Diviser en 5 sections égales
+        float elementWidth = width / 5; 
         
-        // Centrer les éléments dans leurs sections respectives
+
         iterationText.setPosition(elementWidth * 0.5f - iterationText.getLocalBounds().width/2, textY);
         cellCountText.setPosition(elementWidth * 1.5f - cellCountText.getLocalBounds().width/2, textY);
         fpsText.setPosition(elementWidth * 2.5f - fpsText.getLocalBounds().width/2, textY);
         ipsText.setPosition(elementWidth * 3.5f - ipsText.getLocalBounds().width/2, textY);
         
-        // Save button à droite
+
         saveButton.setPosition(
             elementWidth * 4.5f - SAVE_BUTTON_WIDTH/2,
             height - STATS_HEIGHT + (STATS_HEIGHT - SAVE_BUTTON_HEIGHT) / 2
         );
         
-        // Centrer le texte dans le bouton
         sf::FloatRect textBounds = saveText.getLocalBounds();
         saveText.setPosition(
             saveButton.getPosition().x + (SAVE_BUTTON_WIDTH - textBounds.width) / 2,
@@ -149,7 +145,6 @@ void SFMLManager::updateIPS(int iteration) {
 void SFMLManager::updateCellShapes(const GridObject* grid) {
     cellShapes.clear();
     for (const auto& [pos, cell] : grid->cellmap) {
-        // Créer une cellule légèrement plus petite que cellSize pour avoir une grille visible
         sf::RectangleShape shape(sf::Vector2f(cellSize - 1, cellSize - 1));
         shape.setPosition(pos.first * cellSize, pos.second * cellSize);
         
@@ -172,7 +167,6 @@ void SFMLManager::updateUI(const GridObject* grid, int iteration) {
     updateFPS();
     updateIPS(iteration);
     
-    // Mettre à jour les textes
     iterationText.setString("Iterations: " + std::to_string(iteration));
     cellCountText.setString("Living Cells: " + std::to_string(grid->cellmap.size()));
     
@@ -182,7 +176,6 @@ void SFMLManager::updateUI(const GridObject* grid, int iteration) {
     fpsText.setString(fpsStr.str());
     ipsText.setString(ipsStr.str());
     
-    // Recentrer les textes après mise à jour
     float width = window.getSize().x;
     float elementWidth = width / 5;
     float textY = window.getSize().y - STATS_HEIGHT + 15;
@@ -197,14 +190,12 @@ void SFMLManager::updateUI(const GridObject* grid, int iteration) {
 void SFMLManager::render(const GridObject* grid, int iteration) {
     window.clear(sf::Color(20, 20, 20));
     
-    // Draw grid
     window.setView(gridView);
     updateCellShapes(grid);
     for (const auto& shape : cellShapes) {
         window.draw(shape);
     }
     
-    // Draw UI
     if (isPanelVisible) {
         window.setView(uiView);
         window.draw(statsPanel);

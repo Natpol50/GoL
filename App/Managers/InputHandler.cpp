@@ -4,9 +4,7 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
     sf::Vector2i mousePos(event.mouseButton.x, event.mouseButton.y);
 
     if (event.mouseButton.button == sf::Mouse::Left) {
-        // Vérifier le bouton save d'abord
         if (event.type == sf::Event::MouseButtonPressed && manager->checkSaveButtonClick(mousePos)) {
-            // Logique de sauvegarde
             auto now = std::time(nullptr);
             auto tm = *std::localtime(&now);
             std::ostringstream filename;
@@ -20,7 +18,6 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
             return;
         }
 
-        // Gestion des clics sur la grille
         if (event.type == sf::Event::MouseButtonPressed) {
             isMouseDown = true;
             sf::Vector2i gridPos = manager->windowToGrid(mousePos);
@@ -34,8 +31,7 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
         }
     } 
     else if (event.mouseButton.button == sf::Mouse::Right) {
-        isRightMouseDown = (event.type == sf::Event::MouseButtonPressed);
-        if (isRightMouseDown && patterns.getSelectedIndex() >= 0) {
+        if (event.type == sf::Event::MouseButtonReleased && patterns.getSelectedIndex() >= 0) {
             sf::Vector2i gridPos = manager->windowToGrid(mousePos);
             patterns.placePattern(grid, gridPos.x, gridPos.y);
         }
@@ -68,9 +64,12 @@ void InputHandler::handleKeyPress(const sf::Event& event) {
             isPaused = !isPaused;
             break;
         case sf::Keyboard::Right:
-            if (isPaused) {
-                needUpdate = true;
-            }
+            patternManager->setSelectedIndex(patternManager->getSelectedIndex() + 1);
+            std::cout << "Selected pattern: " << patternManager->getSelectedIndex() << std::endl;
+            break;
+        case sf::Keyboard::Left:
+            patternManager->setSelectedIndex(patternManager->getSelectedIndex() - 1);
+            std::cout << "Selected pattern: " << patternManager->getSelectedIndex() << std::endl;
             break;
         case sf::Keyboard::Up:
             simulationSpeed = std::min(simulationSpeed * 1.5f, 1000.0f);

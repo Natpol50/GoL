@@ -1,7 +1,7 @@
 #include "PatternManager.hpp"
 
 PatternManager::PatternManager() 
-    : patterns(PATTERN_LIBRARY), selectedIndex(-1) {}
+    : patterns(PATTERN_LIBRARY), selectedIndex(0) {}
 
 bool PatternManager::setSelectedIndex(int index) {
     if (index >= 0 && index < patterns.size()) {

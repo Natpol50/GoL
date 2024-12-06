@@ -8,7 +8,7 @@
 #include "GameOfLifeGUI.hpp"
 
 #define date "06/12/2024"
-#define version "0.5.1"
+#define version "0.5.9"
 bool mode;
 
 using namespace std;
