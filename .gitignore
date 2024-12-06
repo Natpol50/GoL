@@ -14,3 +14,5 @@ cmake-build-debug/Testing/Temporary/LastTest.log
 cmake-build-debug/GoL
 /.vscode
 /App/.vscode
+/output
+test_input.txt
