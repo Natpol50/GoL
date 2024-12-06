@@ -1,23 +1,21 @@
-
 #ifndef GAMEOFLIFECLI_HPP
 #define GAMEOFLIFECLI_HPP
 
 #include <iostream>
-#include "Managers/FileManager.hpp"
+#include <string>
 #include "Managers/SimManager.hpp"
-#include "Grid/GridObject.hpp"
-
+#include "Managers/FileManager.hpp"
 
 class GameOfLifeCLI
 {
 private:
-    FileManager fileManager;
-    SimManager simManager;
-    GridObject grid;
+    FileManager* fileManager;
+    SimManager* simManager;
+    GridObject* grid;
+
 public:
-    GameOfLifeCLI(string inpuPath, string outputDir, int maxIterations);
+    GameOfLifeCLI(std::string inputPath, std::string outputDir, int maxIterations);
     int run();
 };
-
 
 #endif // GAMEOFLIFECLI_HPP

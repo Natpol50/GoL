@@ -1,13 +1,11 @@
-
 #include "GameOfLifeCLI.hpp"
+#include <string>
 
-using namespace std;
-
-GameOfLifeCLI::GameOfLifeCLI(string inpuPath, string outputDir, int maxIterations)
+GameOfLifeCLI::GameOfLifeCLI(std::string inputPath, std::string outputDir, int maxIterations)
 {
-    fileManager = FileManager(inpuPath, outputDir);
-    grid = fileManager.LoadInitialState();
-    simManager = SimManager(maxIterations);
+    fileManager = new FileManager(inputPath, outputDir);
+    grid = new GridObject(fileManager->LoadInitialState());
+    simManager = new SimManager(maxIterations);
 }
 
 int GameOfLifeCLI::run()
@@ -15,15 +13,16 @@ int GameOfLifeCLI::run()
     int status = 0;
     do
     {
-        status = simManager.iterate(&grid, &fileManager, true, true);
+        status = simManager->iterate(grid, fileManager, true, true);
     } while (status == 0);
+
     if (status == 1)
     {
-        cout << "Max iterations reached" << endl;
+        std::cout << "Max iterations reached" << std::endl;
     }
     else if (status == 2)
     {
-        cout << "Loop detected" << endl;
+        std::cout << "Loop detected" << std::endl;
     }
     return status;
 }

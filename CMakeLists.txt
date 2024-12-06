@@ -29,4 +29,6 @@ add_executable(GoL
     App/Managers/HashHistoryManager.hpp
     App/Managers/SimManager.cpp
     App/Managers/SimManager.hpp
-    App/Tests/SimManagerLogic.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
+    App/GameOfLifeCLI.cpp
+    App/GameOfLifeCLI.hpp
+    App/main_CLI.cpp) # This one should be the real executable, RN is it the GridObjectLogic test
