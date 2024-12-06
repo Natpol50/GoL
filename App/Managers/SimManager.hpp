@@ -14,6 +14,7 @@ private:
     int maxIterations;
     int iteractionCount;
 public:
+    SimManager();
     SimManager(int maxIterations);
     int getCurrentIterationCount();
     int iterate(GridObject* grid, FileManager* FileMan, bool Save);

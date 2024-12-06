@@ -19,6 +19,7 @@ private:
     CellFactory factory;
 
 public:
+    GridObject();
     GridObject(int height, int width, bool toroidal = false);
     
     void initialize(const std::vector<std::tuple<int, int, CellType>>& cells);

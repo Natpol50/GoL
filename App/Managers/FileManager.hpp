@@ -13,6 +13,7 @@ private:
     bool createOutputDir() const;  // Nouvelle méthode
 
 public:
+    FileManager();
     FileManager(const std::string& input, const std::string& output);
     GridObject LoadInitialState() const;
     bool SaveState(const GridObject* grid, const std::string& fileName) const;
