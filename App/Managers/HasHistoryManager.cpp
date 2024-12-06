@@ -5,7 +5,7 @@ HashHistoryManager::HashHistoryManager() {
     previousStates = std::unordered_set<size_t>();
 }
 
-bool HashHistoryManager::hashAndCheck(GridObject grid) {
+bool HashHistoryManager::hashAndCheck(GridObject* grid) {
     hash<GridObject> hash_output;
     size_t hash = hash_output(grid);
 
