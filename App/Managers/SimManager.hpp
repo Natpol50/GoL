@@ -15,7 +15,7 @@ private:
 public:
     SimManager(int maxIterations);
     int getCurrentIterationCount();
-    int iterate(GridObject grid);
+    int iterate(GridObject* grid);
 };
 
 #endif //SIM_MANAGER_HPP

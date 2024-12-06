@@ -12,7 +12,7 @@ private:
     std::unordered_set<size_t> previousStates ;
 public:
     HashHistoryManager();
-    bool hashAndCheck(GridObject);
+    bool hashAndCheck(GridObject*);
     void reset();
 };
 
