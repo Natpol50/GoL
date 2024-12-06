@@ -7,7 +7,6 @@
     #include <windows.h>
 #endif
 #include "Managers/SimManager.hpp"
-#include "Managers/FileManager.hpp"
 
 class GameOfLifeCLI {
 private:

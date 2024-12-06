@@ -71,8 +71,10 @@ int main(int argc, char *argv[])
             return 0;
         case 'g':
             mode = true;
+            break;
         case 'c':
             mode = false;
+            break;
         default:
             cerr << "Invalid option. Use -h for help." << endl;
             mode = false;
@@ -99,8 +101,8 @@ int main(int argc, char *argv[])
         return 0;
     }
     else if (mode == true){
-        GameOfLifeGUI game(includePath, outputPath, maxIterations);
+        GameOfLifeGUI game(inputPath, outputPath);
         game.run();
-        return;
+        return 0;
     }
 }

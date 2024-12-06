@@ -28,6 +28,7 @@ public:
 
     friend class FileManager;
     friend class HashHistoryManager;
+    friend class SFMLManager;
 };
 
 #endif // GRID_H
