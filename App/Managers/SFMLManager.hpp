@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iomanip>
+#include <sstream>
 #include "SimManager.hpp"
 #include "PatternManager.hpp"
 
@@ -13,32 +15,54 @@ private:
     sf::View uiView;
     std::vector<sf::RectangleShape> cellShapes;
     
+    // UI Elements
     sf::RectangleShape statsPanel;
-    sf::RectangleShape controlPanel;
+    sf::RectangleShape saveButton;
     sf::Text iterationText;
     sf::Text cellCountText;
+    sf::Text fpsText;
+    sf::Text ipsText;
+    sf::Text saveText;
     sf::Font font;
     
-    sf::RectangleShape playButton;
-    sf::RectangleShape speedSlider;
-    sf::RectangleShape nextButton;
-    sf::RectangleShape patternSelector;
-    sf::RectangleShape saveButton;
+    // Performance tracking
+    sf::Clock fpsClock;
+    sf::Clock ipsClock;
+    float lastFPSTime;
+    int frameCount;
+    float fps;
+    float lastIterationCount;
+    float currentIterationCount;
+    float ips;
     
+    // State variables
     float cellSize;
     bool isPanelVisible;
+    bool isSaveButtonHovered;
+    
+    // Constants
+    static constexpr float STATS_HEIGHT = 50.f;
+    static constexpr float SAVE_BUTTON_WIDTH = 80.f;
+    static constexpr float SAVE_BUTTON_HEIGHT = 30.f;
+    static constexpr float PADDING = 10.f;
     
     void updateCellShapes(const GridObject* grid);
     void updateUI(const GridObject* grid, int iteration);
+    void updateFPS();
+    void updateIPS(int iteration);
     void setupViews();
+    void setupSaveButton();
+    void adjustGridView();
 
 public:
     SFMLManager();
-    void render(const GridObject* grid, int iteration);
-    sf::RenderWindow& getWindow();
     void handleResize(unsigned int width, unsigned int height);
-    float getCellSize() const { return cellSize; }
+    void render(const GridObject* grid, int iteration);
     sf::Vector2i windowToGrid(sf::Vector2i windowPos);
+    sf::RenderWindow& getWindow();
+    float getCellSize() const { return cellSize; }
+    bool checkSaveButtonClick(const sf::Vector2i& mousePos);
+    void updateSaveButtonHover(const sf::Vector2i& mousePos);
 };
 
-#endif //SFMLMANAGER_HPP
+#endif // SFMLMANAGER_HPP

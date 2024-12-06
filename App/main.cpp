@@ -66,7 +66,9 @@ int main(int argc, char *argv[])
                  << "-v           Displays game version and extra info about it\n\n"
                  << "-p path      Gives input file path for execution [mandatory]\n\n"
                  << "-o name      Gives folder name for iteration outputs\n\n"
-                 << "-i number    Gives max iteration amount\n\n";
+                 << "-i number    Gives max iteration amount\n\n"
+                 << "-g           Launches the GUI version of the game\n\n"
+                 << "-c           Launches the CLI version of the game (default)\n\n";
             exit(0);
             return 0;
         case 'g':

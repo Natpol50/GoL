@@ -7,7 +7,7 @@ GameOfLifeGUI::GameOfLifeGUI(const std::string& inputPath, const std::string& ou
     
     patternManager = new PatternManager();
     sfmlManager = new SFMLManager();
-    inputHandler = new InputHandler(sfmlManager, patternManager, isPaused, simulationSpeed);
+    inputHandler = new InputHandler(sfmlManager, patternManager, fileManager, isPaused, simulationSpeed);
     
     isPaused = true;
     simulationSpeed = 1.0f;
@@ -28,7 +28,7 @@ void GameOfLifeGUI::run() {
     
     while (sfmlManager->getWindow().isOpen()) {
         while (sfmlManager->getWindow().pollEvent(event)) {
-            inputHandler->processEvents(event, grid, isPaused, simulationSpeed);
+            inputHandler->processEvents(event, grid);
         }
         
         if (!isPaused) {

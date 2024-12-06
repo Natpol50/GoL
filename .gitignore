@@ -16,3 +16,5 @@ cmake-build-debug/GoL
 /App/.vscode
 /output
 test_input.txt
+test_smol.txt
+*.py

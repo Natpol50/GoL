@@ -14,8 +14,15 @@ void GridObject::addCell(int x, int y, CellType type) {
         y = (y + height) % height;
     }
     if (isValidPosition(x, y)) {
-        cellmap[{x, y}] = factory.createCell(x, y, type);
-        // std::cout << "Added cell at " << x << ", " << y << std::endl;
+        auto it = cellmap.find({x, y});
+        if (it != cellmap.end()) {
+            if (!it->second->switchState(0)) { // Assuming 3 is the condition for switching state
+                cellmap.erase(it);
+            }
+        } else {
+            cellmap[{x, y}] = factory.createCell(x, y, type);
+            // std::cout << "Added cell at " << x << ", " << y << std::endl;
+        }
     }
 }
 
