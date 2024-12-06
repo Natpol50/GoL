@@ -18,6 +18,8 @@ private:
     bool isMouseDown;
     bool isRightMouseDown;
     sf::Vector2i lastMousePos;
+    sf::Vector2i lastGridPos;
+    bool hasLastGridPos;
     bool& isPaused;
     float& simulationSpeed;
     bool needUpdate;

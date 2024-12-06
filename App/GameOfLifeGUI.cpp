@@ -6,7 +6,7 @@ GameOfLifeGUI::GameOfLifeGUI(const std::string& inputPath, const std::string& ou
     simManager = new SimManager(0);
     
     patternManager = new PatternManager();
-    sfmlManager = new SFMLManager();
+    sfmlManager = new SFMLManager(grid);
     inputHandler = new InputHandler(sfmlManager, patternManager, fileManager, isPaused, simulationSpeed);
     
     isPaused = true;

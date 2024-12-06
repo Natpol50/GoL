@@ -10,6 +10,7 @@
 
 class SFMLManager {
 private:
+    const GridObject* currentGrid;
     sf::RenderWindow window;
     sf::View gridView;
     sf::View uiView;
@@ -55,7 +56,7 @@ private:
     void adjustGridView();
 
 public:
-    SFMLManager();
+    SFMLManager(const GridObject* grid);
     void handleResize(unsigned int width, unsigned int height);
     void render(const GridObject* grid, int iteration);
     sf::Vector2i windowToGrid(sf::Vector2i windowPos);

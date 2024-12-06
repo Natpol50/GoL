@@ -4,10 +4,9 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
     sf::Vector2i mousePos(event.mouseButton.x, event.mouseButton.y);
 
     if (event.mouseButton.button == sf::Mouse::Left) {
-        // Check for save button click
-        if (event.type == sf::Event::MouseButtonPressed && 
-            manager->checkSaveButtonClick(mousePos)) {
-            
+        // Vérifier le bouton save d'abord
+        if (event.type == sf::Event::MouseButtonPressed && manager->checkSaveButtonClick(mousePos)) {
+            // Logique de sauvegarde
             auto now = std::time(nullptr);
             auto tm = *std::localtime(&now);
             std::ostringstream filename;
@@ -21,11 +20,17 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
             return;
         }
 
-        // Normal grid interaction
-        isMouseDown = (event.type == sf::Event::MouseButtonPressed);
-        if (isMouseDown) {
+        // Gestion des clics sur la grille
+        if (event.type == sf::Event::MouseButtonPressed) {
+            isMouseDown = true;
             sf::Vector2i gridPos = manager->windowToGrid(mousePos);
             grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
+            lastGridPos = gridPos;
+            hasLastGridPos = true;
+        }
+        else if (event.type == sf::Event::MouseButtonReleased) {
+            isMouseDown = false;
+            hasLastGridPos = false;
         }
     } 
     else if (event.mouseButton.button == sf::Mouse::Right) {
@@ -44,8 +49,13 @@ void InputHandler::handleMouseMove(const sf::Event& event, GridObject* grid, Pat
     sf::Vector2i gridPos = manager->windowToGrid(currentPos);
     
     if (isMouseDown) {
-        grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
-    } else if (isRightMouseDown && patterns.getSelectedIndex() >= 0) {
+        if (!hasLastGridPos || gridPos != lastGridPos) {
+            grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
+            lastGridPos = gridPos;
+            hasLastGridPos = true;
+        }
+    } 
+    else if (isRightMouseDown && patterns.getSelectedIndex() >= 0) {
         patterns.placePattern(grid, gridPos.x, gridPos.y);
     }
     
