@@ -4,7 +4,8 @@
 #define SIM_MANAGER_HPP
 
 #include "HashHistoryManager.hpp"
-#include "GridObject.hpp"
+#include "FileManager.hpp"
+#include "Grid/GridObject.hpp"
 
 class SimManager
 {
@@ -15,7 +16,7 @@ private:
 public:
     SimManager(int maxIterations);
     int getCurrentIterationCount();
-    int iterate(GridObject* grid);
+    int iterate(GridObject* grid, FileManager* FileMan, bool Save);
 };
 
 #endif //SIM_MANAGER_HPP
