@@ -2,7 +2,7 @@
 #include <iostream>
 
 SFMLManager::SFMLManager(const GridObject* grid)
-    : window(sf::VideoMode(1200, 800), "Game of Life")
+    : window(sf::VideoMode(1200, 800), "Game of Life", sf::Style::Close | sf::Style::Titlebar)
     , cellSize(20.f)
     , isPanelVisible(true)
     , isSaveButtonHovered(false)
