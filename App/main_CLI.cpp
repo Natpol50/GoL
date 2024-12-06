@@ -143,6 +143,7 @@ int main(int argc, char* argv[]) {
                       << "Input Path: " << params.inputPath << "\n"
                       << "Output Path: " << (params.outputPath.empty() ? "Not specified" : params.outputPath) << "\n"
                       << "Max Iterations: " << (params.maxIterations > 0 ? std::to_string(params.maxIterations) : "Unlimited") 
+                      << std::endl;
         }
 
         GameOfLifeCLI game(params.inputPath, params.outputPath, params.maxIterations);
