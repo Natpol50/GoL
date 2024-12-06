@@ -15,7 +15,7 @@ int GameOfLifeCLI::run()
     int status = 0;
     do
     {
-        status = simManager.iterate(&grid, &fileManager, true);
+        status = simManager.iterate(&grid, &fileManager, true, true);
     } while (status == 0);
     if (status == 1)
     {

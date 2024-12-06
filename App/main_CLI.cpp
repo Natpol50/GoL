@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string>
 #include <fstream>
+#include <cassert>
 
 #include "GameOfLifeCLI.hpp"
 
@@ -62,13 +63,13 @@ int main(int argc, char *argv[])
         cout << "input path not provided / can't find file \n please provide file name / path";
         cin >> inputPath ;
     }
-    
+
     //
     // Finally running everything according to parameters
     //
 
     GameOfLifeCLI game(inputPath, outputPath, maxIterations);
     int status = game.run();
-    assert(status == 1);
+    assert(status == 1 || status == 2);
     return 0;
 }
