@@ -65,11 +65,9 @@ void InputHandler::handleKeyPress(const sf::Event& event) {
             break;
         case sf::Keyboard::Right:
             patternManager->setSelectedIndex(patternManager->getSelectedIndex() + 1);
-            std::cout << "Selected pattern: " << patternManager->getSelectedIndex() << std::endl;
             break;
         case sf::Keyboard::Left:
             patternManager->setSelectedIndex(patternManager->getSelectedIndex() - 1);
-            std::cout << "Selected pattern: " << patternManager->getSelectedIndex() << std::endl;
             break;
         case sf::Keyboard::Up:
             simulationSpeed = std::min(simulationSpeed * 1.5f, 1000.0f);

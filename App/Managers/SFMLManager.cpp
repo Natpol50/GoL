@@ -22,10 +22,7 @@ SFMLManager::SFMLManager(const GridObject* grid)
     }
     // Try loading fonts
     try {
-        if (!font.loadFromFile("arial.ttf") &&
-            !font.loadFromFile("verdana.ttf") &&
-            !font.loadFromFile("sansation.ttf") &&
-            !font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf") &&
+        if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf") &&
             !font.loadFromFile("/Library/Fonts/Arial.ttf")) {
             isPanelVisible = false;
             std::cerr << "Warning: No fonts could be loaded\n";

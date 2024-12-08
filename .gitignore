@@ -18,3 +18,4 @@ cmake-build-debug/GoL
 test_input.txt
 test_smol.txt
 *.py
+GoL_Linux
