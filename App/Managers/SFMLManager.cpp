@@ -116,7 +116,7 @@ void SFMLManager::adjustGridView() {
     cellSize = std::min(viewSize.x / currentGrid->width, viewSize.y / currentGrid->height);
     float totalGridWidth = cellSize * currentGrid->width;
     float totalGridHeight = (cellSize * currentGrid->height) + STATS_HEIGHT;
-    gridView.setCenter(totalGridWidth/2, totalGridHeight/2 + 2*STATS_HEIGHT/10);
+    gridView.setCenter(totalGridWidth/2, totalGridHeight/2);
     gridView.setSize(totalGridWidth, totalGridHeight);
 }
 

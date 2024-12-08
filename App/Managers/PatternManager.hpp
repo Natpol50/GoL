@@ -1,7 +1,7 @@
 #ifndef PATTERN_MANAGER_H
 #define PATTERN_MANAGER_H
 
-#include "PatternLibrary.hpp"
+#include "Cell/PatternLibrary.hpp"
 #include "Grid/GridObject.hpp"
 
 class PatternManager {

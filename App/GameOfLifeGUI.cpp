@@ -36,7 +36,7 @@ void GameOfLifeGUI::run() {
             accumulator += dt;
             
             if (accumulator >= 1.0f / simulationSpeed) {
-                simManager->iterate(grid, fileManager, true, true);
+                simManager->iterate(grid, fileManager, false, false);
                 accumulator = 0.0f;
             }
         }
