@@ -26,6 +26,9 @@ public:
     const Cell* getCellAt(int x, int y) const;
     void print() const;
 
+    int getWidth() const { return width; }
+    int getHeight() const { return height; }
+
     friend class FileManager;
     friend class HashHistoryManager;
     friend class SFMLManager;

@@ -7,10 +7,11 @@ GameOfLifeGUI::GameOfLifeGUI(const std::string& inputPath, const std::string& ou
     
     patternManager = new PatternManager();
     sfmlManager = new SFMLManager(grid);
-    inputHandler = new InputHandler(sfmlManager, patternManager, fileManager, isPaused, simulationSpeed);
-    
+    // initialize control state before creating InputHandler (robustness)
     isPaused = true;
     simulationSpeed = 1.0f;
+
+    inputHandler = new InputHandler(sfmlManager, patternManager, fileManager, isPaused, simulationSpeed);
 }
 
 GameOfLifeGUI::~GameOfLifeGUI() {
@@ -41,6 +42,6 @@ void GameOfLifeGUI::run() {
             }
         }
         
-        sfmlManager->render(grid, simManager->getCurrentIterationCount());
+        sfmlManager->render(grid, simManager->getCurrentIterationCount(), patternManager);
     }
 }

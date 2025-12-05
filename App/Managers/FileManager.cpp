@@ -43,7 +43,7 @@ GridObject FileManager::LoadInitialState() const {
     bool isToroidal;
     file >> width >> height >> isToroidal;
     
-    GridObject grid(width, height);
+    GridObject grid(height, width);
     grid.isToroidal = isToroidal;
 
     std::string line;

@@ -17,13 +17,20 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
             }
             return;
         }
+        // Let manager handle other GUI clicks (prefab selector, help)
+        if (event.type == sf::Event::MouseButtonPressed) {
+            manager->handleGUIClick(mousePos, patternManager, fileManager);
+        }
 
         if (event.type == sf::Event::MouseButtonPressed) {
             isMouseDown = true;
             sf::Vector2i gridPos = manager->windowToGrid(mousePos);
-            grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
-            lastGridPos = gridPos;
-            hasLastGridPos = true;
+            if (gridPos.x >= 0 && gridPos.x < grid->getWidth() && 
+                gridPos.y >= 0 && gridPos.y < grid->getHeight()) {
+                grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
+                lastGridPos = gridPos;
+                hasLastGridPos = true;
+            }
         }
         else if (event.type == sf::Event::MouseButtonReleased) {
             isMouseDown = false;
@@ -33,26 +40,35 @@ void InputHandler::handleMouseClick(const sf::Event& event, GridObject* grid, Pa
     else if (event.mouseButton.button == sf::Mouse::Right) {
         if (event.type == sf::Event::MouseButtonReleased && patterns.getSelectedIndex() >= 0) {
             sf::Vector2i gridPos = manager->windowToGrid(mousePos);
-            patterns.placePattern(grid, gridPos.x, gridPos.y);
+            if (gridPos.x >= 0 && gridPos.x < grid->getWidth() && 
+                gridPos.y >= 0 && gridPos.y < grid->getHeight()) {
+                patterns.placePattern(grid, gridPos.x, gridPos.y);
+            }
         }
     }
 }
 
 void InputHandler::handleMouseMove(const sf::Event& event, GridObject* grid, PatternManager& patterns) {
     sf::Vector2i currentPos(event.mouseMove.x, event.mouseMove.y);
-    manager->updateSaveButtonHover(currentPos);
+    manager->updateGUIHover(currentPos, patternManager);
 
     sf::Vector2i gridPos = manager->windowToGrid(currentPos);
     
     if (isMouseDown) {
         if (!hasLastGridPos || gridPos != lastGridPos) {
-            grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
-            lastGridPos = gridPos;
-            hasLastGridPos = true;
+            if (gridPos.x >= 0 && gridPos.x < grid->getWidth() && 
+                gridPos.y >= 0 && gridPos.y < grid->getHeight()) {
+                grid->addCell(gridPos.x, gridPos.y, CellType::ALIVE);
+                lastGridPos = gridPos;
+                hasLastGridPos = true;
+            }
         }
     } 
     else if (isRightMouseDown && patterns.getSelectedIndex() >= 0) {
-        patterns.placePattern(grid, gridPos.x, gridPos.y);
+        if (gridPos.x >= 0 && gridPos.x < grid->getWidth() && 
+            gridPos.y >= 0 && gridPos.y < grid->getHeight()) {
+            patterns.placePattern(grid, gridPos.x, gridPos.y);
+        }
     }
     
     lastMousePos = currentPos;
