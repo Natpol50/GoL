@@ -7,3 +7,6 @@ A response to the project of the OOP Block (CPI , year 2) curriculum at CESI, co
 The goal of the project is to create a C++ implementation of the game of life, with two modes, CLI (for study) and GUI (for Xtreme gaming)
 
 We're ought to use SFML, multithrading and OOP.
+
+
+Files's been tested on linux machiens with different configurations, but not on windows nor mac
