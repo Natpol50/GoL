@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
                  << "│        Adaptive Horizon            │\n"
                  << "├────────────────────────────────────┤\n"
                  << "│ Creators: " << std::setw(20) << "POLETTE Nathan" << "     │\n"
-                 << "│           " << std::setw(20) << "LEMARINEL Océane" << "      │\n"
+                 << "│           " << std::setw(20) << "LEMARINEL Noah" << "        │\n"
                  << "│                                    │\n"
                  << "│ Last Update: " << std::setw(15) << date << "       │\n"
                  << "│ Version:     " << std::setw(15) << version << "       │\n"
@@ -107,4 +107,5 @@ int main(int argc, char *argv[])
         game.run();
         return 0;
     }
+
 }
